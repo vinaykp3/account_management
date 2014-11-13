@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
 * Database creation
+rake db:create
+rake db:migrate
 
 * Database initialization
-
-* How to run the test suite
+rake db:seed
 
 * Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+redis server
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+####redis setup instruction ######
+
+1. wget http://download.redis.io/releases/redis-2.8.17.tar.gz
+2. tar xzf redis-2.8.17.tar.gz
+3. cd redis-2.8.17
+4. sudo make install
+5. cd utils
+6. sudo ./install_server.sh
+
+#### redis server will be running  #####

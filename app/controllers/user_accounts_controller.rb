@@ -5,39 +5,6 @@ class UserAccountsController < ApplicationController
 
   def index
     @user_accounts = UserAccount.all
-    if request.referrer.nil?
-      redirect_to $redis.get("user_#{current_user.id}")
-    else  
-      respond_with(@user_accounts)
-    end  
-  end
-
-  def show
-    respond_with(@user_account)
-  end
-
-  def new
-    @user_account = UserAccount.new
-    respond_with(@user_account)
-  end
-
-  def edit
-  end
-
-  def create
-    @user_account = UserAccount.new(user_account_params)
-    @user_account.save
-    respond_with(@user_account)
-  end
-
-  def update
-    @user_account.update(user_account_params)
-    respond_with(@user_account)
-  end
-
-  def destroy
-    @user_account.destroy
-    respond_with(@user_account)
   end
 
   def sign_out_user
