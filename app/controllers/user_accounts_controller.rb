@@ -5,7 +5,11 @@ class UserAccountsController < ApplicationController
 
   def index
     @user_accounts = UserAccount.all
-    respond_with(@user_accounts)
+    if request.referrer.nil?
+      redirect_to $redis.get("user_#{current_user.id}")
+    else  
+      respond_with(@user_accounts)
+    end  
   end
 
   def show
@@ -37,8 +41,7 @@ class UserAccountsController < ApplicationController
   end
 
   def sign_out_user
-    url = UserUrl.find_by_user_id(current_user.id)
-    url.update_attribute(:location, root_path)
+    $redis.del "user_#{current_user.id}"
     sign_out :user
     redirect_to root_path
   end  

@@ -20,25 +20,14 @@ class ApplicationController < ActionController::Base
   # #binding.pry
   #   session[:previous_url] = request.fullpath
     # redirect_to if user_signed_in?
-
    if current_user
-   		url = UserUrl.find_by_user_id(current_user.id)
-   		if url
-   			url.update_attribute(:location, request.fullpath)
-   		else
-   			url = UserUrl.create(:user_id=>current_user.id, :location=>request.fullpath)			
-   		end
+   		$redis.set("user_#{current_user.id}", request.fullpath)
    end 
-  end
+ end
 
 	def after_sign_in_path_for(resource)
 	  # session[:previous_url] || root_path
-	  url = UserUrl.find_by_user_id(resource.id)
-		if url
-			url.location
-		else
-			root_path		
-		end
+	  $redis.get("user_#{resource.id}") || root_path
 	end
 
 	# def after_sign_out_path_for(resource)

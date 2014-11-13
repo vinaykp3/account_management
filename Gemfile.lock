@@ -93,6 +93,9 @@ GEM
     rake (10.3.2)
     rdoc (4.1.2)
       json (~> 1.4)
+    redis (3.1.0)
+    redis-namespace (1.5.1)
+      redis (~> 3.0, >= 3.0.4)
     ref (1.0.5)
     responders (1.1.2)
       railties (>= 3.2, < 4.2)
@@ -161,6 +164,8 @@ DEPENDENCIES
   mysql2
   pry
   rails (= 4.1.1)
+  redis
+  redis-namespace
   rspec-core
   rspec-rails
   sass-rails (~> 4.0.3)

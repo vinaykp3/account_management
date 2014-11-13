@@ -27,6 +27,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 #gem 'spring',        group: :development
 
 gem "devise"
+gem 'redis'
+gem 'redis-namespace'
 group :development, :test do
 	gem 'pry'	
 end
