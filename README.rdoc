@@ -21,3 +21,9 @@ redis server
 6. sudo ./install_server.sh
 
 #### redis server will be running  #####
+
+##### running application ######
+
+In seed I have created a user with email : admin@gmail.com, and password : admin$123 and added five trasactions for the user.
+
+User have to login using the above credentials which navigate to user home page from there user can find account statement link and click on that link will lead user to account statement page.
